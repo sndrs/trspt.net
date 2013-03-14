@@ -1,0 +1,197 @@
+!!! 5
+//if lt IE 7
+	html.no-js.lt-ie9.lt-ie8.lt-ie7(lang='en')
+//if IE 7
+	html.no-js.lt-ie9.lt-ie8(lang='en')
+//if IE 8
+	html.no-js.lt-ie9(lang='en')
+//[if gt IE 8]><!
+html.no-js(lang='en')
+	//<![endif]
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		title Transept
+		meta(name='description', content='Transept is a synth-folk drone-ballad band from Norwich, UK.')
+		meta(name='author', content='Alex Sanders')
+		meta(name='keywords', content='Drone Henge, Transept, gongs, sentinels, phil archer, dr. phil, liam wells, son of blessed, quarthon, alex sanders, alexander sanders, noise gay, music, norwich, prog, ballads, noise, drone, prisms, consult the prism, TRSPT001')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(rel='shortcut icon', href='/favicon.ico')
+		link(rel='apple-touch-icon', href='/apple-touch-icon.png')
+		link(rel='stylesheet', href='/css/style.css?v=2')
+		script(src='http://ajax.cdnjs.com/ajax/libs/modernizr/1.7/modernizr-1.7.min.js')
+		script
+			window.Modernizr || document.write("<script src='/js/libs/modernizr-1.7.min.js'>\\x3C/script>")
+		script#tweetTemplate(type='text/x-jquery-tmpl')
+			<time>${formatDate(new Date(Date.parse(created_at)))}</time>
+			<p data-id="${id_str}">${text}</p>
+	body
+		#container
+			header#intro-info
+				a(href='/')
+					h1#logo Transept
+				p#description Transept are a band from Norwich, UK.
+				p#quote
+				script#quoteTemplate(type='text/x-jquery-tmpl')
+					<q>${quote}</q> {{if source}}<cite>${source}</cite>{{/if}}
+			#main(role='main')
+				article#tweets.loading-ajax
+					header
+						h2 News
+					span#tweet_container
+					#twitter_button
+						a.twitter-follow-button(href='https://twitter.com/trspt', data-show-count='false', data-lang='en', data-show-screen-name='false') Follow @trspt
+						script
+							!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+				article#releases
+					header
+						h2 Releases
+					ul
+						li#baf
+							time 25th March, 2013
+							p
+								a(href='http://buffasfuck.me', title='Purchase \'Buff as Fuck\' on CD, Vinyl and download')
+									span.release_link_label Preorder 'Buff as Fuck' on CD, Vinyl and download
+									span.release_note
+										em.release_title Buff as Fuck
+										span.release_price £14.99
+										span.release_type Vinyl
+										span.release_price £9.99
+										span.release_type CD
+										span.release_price £4.99
+										span.release_type Download
+						li#trspt001-rmx
+							time 14th March, 2011
+							p
+								a(href='http://transept.bandcamp.com/album/trspt001-rmx', title="Download 'TRSPT001\\rmx'")
+									span.release_link_label
+										| Download 'TRSPT001\rmx'
+										span.release_link_desc feat. Luke Abbott, Checkout Girls, Hoofus, Alex Sanders.
+									span.release_note
+										em.release_title TRSPT001\rmx
+										span.release_price free/£0.99
+										span.release_type download
+						li#trspt001-vinyl
+							time 24th January, 2011
+							p
+								a(href='http://transept.bigcartel.com/product/trspt001', title='Purchase \'TRSPT001\' on vinyl')
+									span.release_link_label Purchase 'TRSPT001' on vinyl
+									span.release_note
+										em.release_title TRSPT001
+										span.release_price £9.99
+										span.release_type 200gm vinyl
+						li#trspt001-dl
+							time 24th January, 2011
+							p
+								a(href='http://transept.bandcamp.com/album/trspt001-2', target='_blank', title='Listen to/purchase \'TRSPT001\'')
+									span.release_link_label Listen to/purchase 'TRSPT001'
+									span.release_note
+										em.release_title TRSPT001
+										span.release_price £4.99
+										span.release_type download
+						li#xmmx
+							time 20th December, 2010
+							p
+								a(href='http://transept.bandcamp.com/album/xmmx', target='_blank', title='Listen to/download \'XMMX\'')
+									span.release_link_label Listen to/purchase 'XMMX'
+									span.release_note
+										em.release_title XMMX (Christmas single)
+										span.release_price free
+										span.release_type download
+						li#oss
+							time 6th June, 2010
+							p
+								a(href='http://transept.bandcamp.com/album/live-in-session-at-old-school-studios', target='_blank', title='Listen to/download \'Live in session at Old School Studios\'')
+									span.release-cover Listen to/download 'Live in session at Old School Studios'
+									span.release_note
+										em.release_title Live in session at Old School Studios
+										span.release_price free
+										span.release_type download
+						li#for-example
+							time 15th February, 2008
+							p
+								a(href='http://www.ilyaandemilia.co.uk/For_Example.html', target='_blank', title='Purchase \'For Example\'')
+									span.release_link_label
+										| Purchase 'For Example'
+										span.release_link_desc feat. Transept, Luke Abbott, Mia Vigar, Mat Riviere and more…
+									span.release_note
+										em.release_title Ilya & Emila For Example
+										span.release_price £6
+										span.release_type compilation CD
+				article#gigs.loading-ajax
+					header
+						h2 Gigs
+					script#gigTemplate(type='text/x-jquery-tmpl')
+						<time>${date}</time>
+						<p class="gig"><a href="${uri}" target="_blank">
+						{{if status == 'cancelled'}}
+						<del>${venue.displayName}, ${location.city}.</del> <span class="cancelled_notifier">cancelled :(</span>
+						{{else type == 'Concert'}}
+						${venue.displayName}, ${location.city}.
+						{{else type == 'Festival'}}
+						${series.displayName}, ${location.city}.
+						{{/if}}
+						</a></p>
+				article#contact
+					header
+						h2 Links etc.
+					dl
+						dt Updates
+						dd
+							ul
+								li
+									a(href='http://twitter.com/trspt') twitter
+								li
+									a(href='http://www.facebook.com/pages/Transept/119132239065') facebook
+								li
+									a(href='http://www.songkick.com/artists/1256157-transept') songkick
+						dt Sales
+						dd
+							ul
+								li
+									a(href='http://transept.bandcamp.com/') bandcamp
+								li
+									a(href='http://itunes.apple.com/gb/artist/transept/id367129896') iTunes
+								li
+									a(href='http://www.amazon.co.uk/gp/product/B003HIB5XI/ref=dm_dp_adp?ie=UTF8&qid=1280324424&sr=8-1') amazon
+								li
+									a(href='http://transept.bigcartel.com/') vinyl
+								li
+									a(href='http://www.shellshock.co.uk/stockists.php') stockists
+						dt Audio
+						dd
+							a(href='http://soundcloud.com/transept') soundcloud
+						dt Video
+						dd
+							ul
+								li
+									a(href='http://www.vimeo.com/transept') vimeo
+								li
+									a(href='http://www.youtube.com/user/Transpectacles') youtube
+					h2.subHeader Contact
+					dl
+						dt Press
+						dd
+							a(href='mailto:sean@mutante.co.uk') sean@mutante.co.uk
+						dt Booking & greetings
+						dd
+							a(href='mailto:info@trspt.net') info@trspt.net
+						dt Label
+						dd
+							a(href='http://dronehenge.com') Dronehenge Records
+			footer
+				#like
+					iframe#like_iframe(src='http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Ftransept&width=300&colorscheme=light&show_faces=false&border_color&stream=false&header=true&height=62', scrolling='no', frameborder='0', style='border: none; overflow: hidden; width: 100%; height: 62px;', allowtransparency='true')
+		//
+			! end of #container 
+		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js')
+		script
+			window.jQuery || document.write("<script src='/js/libs/jquery-1.5.1.min.js'>\\x3C/script>")
+		script(src='http://documentcloud.github.com/underscore/underscore-min.js')
+		script(src='/js/plugins.js')
+		script(src='/js/script.js')
+		script
+			var _gaq=[["_setAccount","UA-13304456-1"],["_trackPageview"]];
+			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+			g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+			s.parentNode.insertBefore(g,s)}(document,"script"));
